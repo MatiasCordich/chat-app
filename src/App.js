@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { auth } from './firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import SignOut from './components/SignOut/SignOut';
+import { Header, Wrapper, Section } from './styles/Styles';
+import SingIn from './components/SignIn/SingIn';
+import ChatRoom from './components/ChatRoom/ChatRoom';
+import PopUp from './components/PopUp/PopUp'
+import { useState } from 'react';
+import { PopUpBtn } from './components/PopUpBtn/PopUpStyle';
 
 function App() {
+
+  const [user] = useAuthState(auth)
+
+  const [open, setOpen] = useState(false)
+
+  const openModal = () => {
+    setOpen(true)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      {open && <PopUp closeModal={setOpen}/>}
+      <Header>
+          <SignOut/>
+          <PopUpBtn onClick={openModal}>Developer</PopUpBtn>
+      </Header>
+      <Section>
+          {user ? <ChatRoom /> : <SingIn />}
+      </Section>
+    </Wrapper>
   );
 }
 
