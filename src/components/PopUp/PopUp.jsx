@@ -18,7 +18,7 @@ const PopUp = ({closeModal}) => {
                     <Icons src="https://img.icons8.com/wired/50/fafafa/briefcase.png"/>
                     Portfolio
                 </a>
-                <a style={{color: '#fafafa',display: 'flex', justifyContent:'center', alignItems:'center', gap:'1rem'}} href="link" target='__blank'>
+                <a style={{color: '#fafafa',display: 'flex', justifyContent:'center', alignItems:'center', gap:'1rem'}} href="https://github.com/MatiasCordich/chat-app" target='__blank'>
                     <Icons src="https://img.icons8.com/wired/50/fafafa/github.png"/>
                     Github
                 </a>
